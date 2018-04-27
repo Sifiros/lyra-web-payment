@@ -43,7 +43,7 @@ function showMessage(message) {
     
   
     navigator.serviceWorker
-      .getRegistration('app.js')
+      .getRegistration('./payment_handler.js')
       .then(registration => {
         console.log("registration object :");
         console.log(registration);
@@ -120,7 +120,7 @@ function showMessage(message) {
     showElement('installing');
   
     navigator.serviceWorker
-      .register('./app.js')
+      .register('./payment_handler.js')
       .then(() => {
         return navigator.serviceWorker.ready;
       })
@@ -184,7 +184,7 @@ function showMessage(message) {
     showElement('uninstalling');
   
     navigator.serviceWorker
-      .getRegistration('app.js')
+      .getRegistration('./payment_handler.js')
       .then(registration => {
         registration
           .unregister()

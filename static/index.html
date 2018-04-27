@@ -1,102 +1,55 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title></title>
-    <link rel="stylesheet" href="css/milligram.min.css">
-    <style>
-        html, body, .container, .row {
-            height: 100%;
-        }
-
-        .formcontainer {
-            background: #f0f0f0;
-            padding: 15px;
-        }
-
-        .formcontainer form, .formcontainer fieldset{
-            margin:0;
-        }
-
-        .secretcontainer {
-            background: #f0f0f0;
-            padding: 15px;
-        }
-
-        #registerContainer, #mainContainer {
-            display: none;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Credit Card Test</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="manifest" href="./conf/manifest.json">
 </head>
 <body>
-    <div class="container">
-        <div class="row row-center">
+  <div id="contents">
 
-            <div class="column" id="registerContainer">
-                <div class="formcontainer register">
-                    <h3>Register page</h3>
-                    <form id="register">
-                      <fieldset>
-                        <label for="name">name</label>
-                        <input type="text" name="name">
-                        <label for="username">username</label>
-                        <input type="text" name="username">
-                        
-                        <label for="password">password </label>
-                        <input type="password" name="password">
 
-                        <input class="button-primary" type="submit" value="Register">
-                      </fieldset>
-                    </form>
+    <p id="checking">Checking whether the payment handler is installed...</p>
 
-                    <a href="#" id="toLogin">Already registered? Login page</a>
-                </div>
-            </div>
-
-            <div class="column" id="loginContainer">
-                <div class="formcontainer login">
-                    <h3>Login page</h3>
-                    <form id="login">
-                      <fieldset>
-                        <label for="nameField">username</label>
-                        <input type="text" name="username">
-
-                        <label for="password">password </label>
-                        <input type="password" name="password">
-
-                        <input class="button-primary" type="submit" value="Login">
-                      </fieldset>
-                    </form>
-
-                    <a href="#" id="toRegistration">Not registered yet? Registration</a>
-                </div>
-            </div>
-
-            <div class="column" id="mainContainer">
-
-                <div class="secretcontainer">
-                    <h3>Hey <span id="name"></span>!</h3>
-                    <div id="theSecret"></div>
-                    <button id="logoutButton">Logout</button>
-                </div>
-            </div>
-
-        </div>
+    <div id="installed" style="display: none;">
+        <p>The payment handler is installed.</p>
+        <ul>
+            <li>Scope: <code id="scope">N/A</code></li>
+            <li>Method: <code id="method">N/A</code></li>
+            <li>Capabilities:
+                <ul>
+                    <li>Network: <code id="network">N/A</code></li>
+                    <li>Type: <code id="type">N/A</code></li>
+                </ul>
+            </li>
+        </ul>
+        <p><button onclick="uninstall();">Uninstall</button></p>
     </div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/base64url-arraybuffer.js"></script>
-    <script src="js/view.js"></script>
-    <script src="js/password.auth.js"></script>
-    <script src="js/webauthn.auth.js"></script>
-    <script>
-        $(document).ready(() => {
-            checkIfLoggedIn()
-            .then((response) => {
-                if(response)
-                    return loadMainContainer()
-            })
-        })
-    </script>
+    <p id="installing" style="display: none;">Installing...</p>
+    <p id="uninstalling" style="display: none;">Uninstalling...</p>
+
+    <div id="not-installed" style="display: none;">
+        <p>The payment handler is not installed.</p>
+        <p><button onclick="install();">Install</button></p>
+    </div>
+
+    <pre id="msg"></pre>
+
+
+    <h1>Credit Card Test</h1>
+    <p>This page can be used to test credit card payments.
+    No payment will be processed.</p>
+    <p>Price: USD <strong>$55.00</strong></p>
+    <p><button onclick="onBuyClicked()">Buy</button></p>
+
+
+  </div>
+  <pre id="msg"></pre>
+  <script src="installer.js"></script>
+  <script src="./js/payment_request_modules/utils_pr.js"></script>
+  <script src="./js/payment_request_modules/payment_request.js"></script>
 </body>
 </html>
