@@ -1,55 +1,92 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Credit Card Test</title>
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <link rel="manifest" href="./conf/manifest.json">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Credit Card Test</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="manifest" href="./conf/manifest.json">
+    <script src="../js/auth/jquery-3.2.1.min.js"></script>
 </head>
+
 <body>
-  <div id="contents">
+    <div id="contents">
 
 
-    <p id="checking">Checking whether the payment handler is installed...</p>
+        <p id="checking">Checking whether the payment handler is installed...</p>
 
-    <div id="installed" style="display: none;">
-        <p>The payment handler is installed.</p>
-        <ul>
-            <li>Scope: <code id="scope">N/A</code></li>
-            <li>Method: <code id="method">N/A</code></li>
-            <li>Capabilities:
-                <ul>
-                    <li>Network: <code id="network">N/A</code></li>
-                    <li>Type: <code id="type">N/A</code></li>
-                </ul>
-            </li>
-        </ul>
-        <p><button onclick="uninstall();">Uninstall</button></p>
+        <div id="installed" style="display: none;">
+            <p>The payment handler is installed.</p>
+            <ul>
+                <li>Scope:
+                    <code id="scope">N/A</code>
+                </li>
+                <li>Method:
+                    <code id="method">N/A</code>
+                </li>
+                <li>Capabilities:
+                    <ul>
+                        <li>Network:
+                            <code id="network">N/A</code>
+                        </li>
+                        <li>Type:
+                            <code id="type">N/A</code>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                <button onclick="uninstall();">Uninstall</button>
+            </p>
+        </div>
+
+        <p id="installing" style="display: none;">Installing...</p>
+        <p id="uninstalling" style="display: none;">Uninstalling...</p>
+
+        <div id="not-installed" style="display: none;">
+            <p>The payment handler is not installed.</p>
+            <p>
+                <button onclick="install();">Install</button>
+            </p>
+        </div>
+
+        <pre id="msg"></pre>
+
+
+        <h1>Credit Card Test</h1>
+        <p>This page can be used to test credit card payments. No payment will be processed.</p>
+        <p>Price: USD
+            <strong>$55.00</strong>
+        </p>
+        <p>
+            <button onclick="checkAndRedirect()">Buy</button>
+        </p>
+
     </div>
-
-    <p id="installing" style="display: none;">Installing...</p>
-    <p id="uninstalling" style="display: none;">Uninstalling...</p>
-
-    <div id="not-installed" style="display: none;">
-        <p>The payment handler is not installed.</p>
-        <p><button onclick="install();">Install</button></p>
-    </div>
-
     <pre id="msg"></pre>
+    <script src="installer.js"></script>
+    <script src="./js/payment_request_modules/utils_pr.js"></script>
+    <script src="./js/payment_request_modules/payment_request.js"></script>
+    <script src="./js/redirect.js"></script>
+    <script>
+        $(document).ready(() => {
+            checkIfLoggedIn()
+                .then((response) => {
+                    if (response) {
+                        var baseURL = window.location.href
+                        var url = new URL(baseURL);
+                        if (url.searchParams.get('buy') == 1) {
+                           onBuyClicked()
+                           return; 
+                        }
+                    }
 
+                })
 
-    <h1>Credit Card Test</h1>
-    <p>This page can be used to test credit card payments.
-    No payment will be processed.</p>
-    <p>Price: USD <strong>$55.00</strong></p>
-    <p><button onclick="onBuyClicked()">Buy</button></p>
+        })
+    </script>
 
-
-  </div>
-  <pre id="msg"></pre>
-  <script src="installer.js"></script>
-  <script src="./js/payment_request_modules/utils_pr.js"></script>
-  <script src="./js/payment_request_modules/payment_request.js"></script>
 </body>
+
 </html>

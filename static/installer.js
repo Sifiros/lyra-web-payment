@@ -51,6 +51,7 @@ function showMessage(message) {
         if (!registration) {
           hideElement('checking');
           showElement('not-installed');
+          install();
           return;
         }
 
@@ -118,9 +119,11 @@ function showMessage(message) {
   function install() {
     hideElements();
     showElement('installing');
+    console.log('STARTING INSTALLATION');
+    
   
     navigator.serviceWorker
-      .register('./payment_handler.js')
+      .register('payment_handler.js')
       .then(() => {
         return navigator.serviceWorker.ready;
       })
@@ -184,7 +187,7 @@ function showMessage(message) {
     showElement('uninstalling');
   
     navigator.serviceWorker
-      .getRegistration('./payment_handler.js')
+      .getRegistration('payment_handler.js')
       .then(registration => {
         registration
           .unregister()

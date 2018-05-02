@@ -17,19 +17,26 @@ $('#toRegistration').click(function(e) {
 })
 
 let loadMainContainer = () => {
-    return fetch('/personalInfo', {credentials: 'include'})
-        .then((response) => response.json())
-        .then((response) => {
-            if(response.status === 'ok') {
-                $('#theSecret').html(response.theSecret)
-                $('#name').html(response.name)
-                $('#registerContainer').hide();
-                $('#loginContainer').hide();
-                $('#mainContainer').show();
-            } else {
-                alert(`Error! ${response.message}`)
-            }
-        })
+
+     if (history.length > 0) {
+         var toCraftURL = document.referrer + "/?buy=1"
+         document.location.replace(toCraftURL)
+     }
+
+  //  console.log(document.referrer)
+  //  return fetch('/personalInfo', {credentials: 'include'})
+  //      .then((response) => response.json())
+  //      .then((response) => {
+  //          if(response.status === 'ok') {
+  //              $('#theSecret').html(response.theSecret)
+  //              $('#name').html(response.name)
+  //              $('#registerContainer').hide();
+  //              $('#loginContainer').hide();
+  //              $('#mainContainer').show();
+  //          } else {
+  //              alert(`Error! ${response.message}`)
+  //          }
+  //      })
 }
 
 let checkIfLoggedIn = () => {

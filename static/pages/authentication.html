@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="css/milligram.min.css">
+    <link rel="stylesheet" type="text/html" href="css/milligram.min.css">
     <style>
         html, body, .container, .row {
             height: 100%;
@@ -92,6 +92,7 @@
         $(document).ready(() => {
             checkIfLoggedIn()
             .then((response) => {
+                console.log("AFTER CHECK IF LOGGED IN AUTHENT PRECHECK");
                 if(response)
                     return loadMainContainer()
             })

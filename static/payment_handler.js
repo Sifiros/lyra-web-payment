@@ -1,4 +1,5 @@
 self.addEventListener('paymentrequest', (evt) => {
+    
     evt.respondWith({
         methodName: 'basic-card',
         details: {
