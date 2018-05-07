@@ -60,7 +60,7 @@
             <strong>$55.00</strong>
         </p>
         <p>
-            <button onclick="checkAndRedirect()">Buy</button>
+            <button onclick="onBuyClicked()">Buy</button>
         </p>
 
     </div>
@@ -69,24 +69,6 @@
     <script src="./js/payment_request_modules/utils_pr.js"></script>
     <script src="./js/payment_request_modules/payment_request.js"></script>
     <script src="./js/redirect.js"></script>
-    <script>
-        $(document).ready(() => {
-            checkIfLoggedIn()
-                .then((response) => {
-                    if (response) {
-                        var baseURL = window.location.href
-                        var url = new URL(baseURL);
-                        if (url.searchParams.get('buy') == 1) {
-                           onBuyClicked()
-                           return; 
-                        }
-                    }
-
-                })
-
-        })
-    </script>
-
 </body>
 
 </html>

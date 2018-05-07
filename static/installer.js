@@ -51,7 +51,7 @@ function showMessage(message) {
         if (!registration) {
           hideElement('checking');
           showElement('not-installed');
-          install();
+          // install();
           return;
         }
 

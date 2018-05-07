@@ -1,0 +1,19 @@
+{
+  "name": "Pay with Lyra",
+  "short_name": "Lyra",
+  "icons": [{
+  	"src": "./lyra-network-300.jpg",
+  	"sizes": "300x300",
+  	"type": "image/png"
+  }],
+  "serviceworker": {
+    "src": "sw-bobpay.js",
+    "use_cache": false
+  },
+  "prefer_related_applications": true,
+  "related_applications": [{
+  	"platform": "play",
+  	"url": "https://play.google.com/store/apps/details?id=com.bobpay",
+  	"id": "com.bobpay"
+  }]
+}

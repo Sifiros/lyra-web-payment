@@ -92,7 +92,6 @@
         $(document).ready(() => {
             checkIfLoggedIn()
             .then((response) => {
-                console.log("AFTER CHECK IF LOGGED IN AUTHENT PRECHECK");
                 if(response)
                     return loadMainContainer()
             })

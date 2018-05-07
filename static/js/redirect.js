@@ -9,12 +9,3 @@ let checkIfLoggedIn = () => {
             }
         })
 }
-
-function checkAndRedirect() {
-
-    if (checkIfLoggedIn() === true) {
-        onBuyClicked()
-    } else {
-        window.location.replace('http://localhost:3000/pages/authentication.html');
-    }
-}
