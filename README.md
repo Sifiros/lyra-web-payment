@@ -2,6 +2,8 @@
 
 Demonstrator Webauthn + Payment request + Payment handler
 
+The website should be tested with chrome canary with "Service Worker payment apps" and Web Authentication API flags enabled.
+
 Currently online [here](https://test-payment-handler.appspot.com/)
 
 To test it, you have to install the payment handler at the bottom of the page.
