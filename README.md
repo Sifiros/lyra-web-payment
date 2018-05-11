@@ -2,7 +2,7 @@
 
 ### Demonstrator Webauthn + Payment request + Payment handler
 
-## Requierment
+## Requirement
 The website should be tested with chrome canary with "Service Worker payment apps" and Web Authentication API flags enabled.
 
 ## Test it
