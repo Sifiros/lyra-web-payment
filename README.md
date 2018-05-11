@@ -1,18 +1,22 @@
 # lyra-web-payment
 
-Demonstrator Webauthn + Payment request + Payment handler
+### Demonstrator Webauthn + Payment request + Payment handler
 
+## Requierment
 The website should be tested with chrome canary with "Service Worker payment apps" and Web Authentication API flags enabled.
 
+## Test it
 Currently online [here](https://test-payment-handler.appspot.com/)
 
-To test it, you have to install the payment handler at the bottom of the page.
 
-After that, clic the button Lauch payment Request next to the phone.
+### How to test
+To test it, you have to install the Payment handler at the bottom of the page.
+
+After that, click the button Lauch Payment Request next to the phone.
 
 If the installed payment handler does not appear, uninstall and reinstall it.
 
-If it appears, select it and click the paiment button, i will probably fail the first time, just reclick on launch payment request and retry.
+If it appears, select it and click the paiment button, it will probably fail the first time, just reclick on Launch Payment Request button and retry.
 
 A login page will appear. It does not works at this time.
 
