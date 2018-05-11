@@ -6,7 +6,7 @@
 The website should be tested with chrome canary with "Service Worker payment apps" and Web Authentication API flags enabled.
 
 ## Test it
-Currently online [here](https://test-payment-handler.appspot.com/)
+Currently online [here](https://test-payment-handler.appspot.com/).
 
 
 ### How to test
@@ -20,4 +20,4 @@ If it appears, select it and click the paiment button, it will probably fail the
 
 A login page will appear. It does not works at this time.
 
-If you wants to try the webauthn authentication, you can do it [here](https://test-payment-handler.appspot.com/pages/authentication.html)
+If you wants to try the webauthn authentication, you can do it [here](https://test-payment-handler.appspot.com/pages/authentication.html).
