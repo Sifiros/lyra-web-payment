@@ -25,6 +25,7 @@ A login page will appear. It does not works at this time.
 If you wants to try the webauthn authentication, you can do it [here](https://test-payment-handler.appspot.com/pages/authentication.html).
 
 This project uses as basis:
+
      https://github.com/fido-alliance/webauthn-demo for the webauthn part.
      https://github.com/madmath/payment-request-show/tree/master/bobpay for the payment handler part.
      https://github.com/rsolomakhin/rsolomakhin.github.io/tree/master/pr/apps/basic-card for the payment request part.
