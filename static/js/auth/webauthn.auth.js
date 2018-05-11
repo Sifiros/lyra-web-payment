@@ -45,6 +45,9 @@ $('#register').submit(function(event) {
     let name     = this.name.value;
     let password = this.password.value;
 
+    console.log("in #register " + username + " " + name + " " + password);
+    
+
     if(!username || !name || !password) {
         alert('Name , username or password is missing!')
         return

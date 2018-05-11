@@ -1,5 +1,5 @@
 {
-  "name": "webauthn-tutorial",
+  "name": "webauthn",
   "version": "0.0.1",
   "description": "",
   "main": "app.js",
@@ -9,17 +9,12 @@
     "cbor": "^3.0.3",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "@google-cloud/storage" : "^1.6.0" 
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fido-alliance/"
+  "scripts": {
+    "start": "node app.js"
   },
   "private": true,
-  "author": "Yuriy Ackermann <yuriy@fidoalliance.org> (https://jeman.de/)",
-  "bugs": {
-    "url": "https://github.com/fido-alliance//issues",
-    "email": "yuriy@fidoalliance.org"
-  },
-  "homepage": "https://github.com/fido-alliance/#readme"
+  "author": "Maxime Bel <maxime.bel@lyra-network.com>"
 }

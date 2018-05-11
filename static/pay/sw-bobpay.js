@@ -1,70 +1,51 @@
 let payment_request_event = undefined;
 let payment_request_resolver = undefined;
 
-self.addEventListener('canmakepayment', function(e) {
+self.addEventListener('canmakepayment', function (e) {
+  console.log("can make payment !");
+  
   e.respondWith(true);
 });
 
-self.addEventListener('paymentrequest', function(e) {
-
-    //e.respondWith({
-        //methodName: 'basic-card',
-        //details: {
-            //billingAddress: {
-                //addressLine: [
-                    //'109 Rue de l\'Innovation, 31670 Labège',
-                //],
-                //city: 'Labège',
-                //country: 'FR',
-                //dependentLocality: '',
-                //languageCode: '',
-                //organization: 'Lyra-Network',
-                //phone: '+15555555555',
-                //postalCode: '31670',
-                //recipient: 'Le Swin',
-                //region: 'Occitanie',
-                //sortingCode: ''
-            //},
-            //cardNumber: '4111111111111111',
-            //cardSecurityCode: '123',
-            //cardholderName: 'Le Swin',
-            //expiryMonth: '01',
-            //expiryYear: '2020',
-        //},
-      //})
+self.addEventListener('paymentrequest', function (e) {
 
   payment_request_event = e;
 
   payment_request_resolver = new PromiseResolver();
   e.respondWith(payment_request_resolver.promise);
 
-  // var url = "localhost:8080/pay/index.html";
-  var url = 'https://payzen.eu/demo/fr/redirected/'
+  var url = "https://test-payment-handler.appspot.com/pages/authentication.html";
+
+  // var url = 'https://payzen.eu/demo/fr/redirected/'
   // The methodData here represents what the merchant supports. We could have a
   // payment selection screen, but for this simple demo if we see alipay in the list
   // we send the user through the alipay flow.
   console.log(e.methodData);
-  
+
   // if (e.methodData[0].supportedMethods[0].indexOf('alipay') != -1)
-    // url += "/alipay.html";
+  // url += "/alipay.html";
 
   e.openWindow(url)
     .then(window_client => {
-      if(window_client == null)
+
+      console.log(window_client);
+      
+      if (window_client == null)
         payment_request_resolver.reject('Failed to open window');
+
     })
-    .catch(function(err) {
+    .catch(function (err) {
       payment_request_resolver.reject(err);
     })
 });
 
-self.addEventListener('message', listener = function(e) {
+self.addEventListener('message', listener = function (e) {
   if (e.data == "payment_app_window_ready") {
     sendPaymentRequest();
     return;
   }
 
-  if(e.data.methodName) {
+  if (e.data.methodName) {
     payment_request_resolver.resolve(e.data);
   } else {
     payment_request_resolver.reject(e.data);
@@ -79,8 +60,8 @@ function sendPaymentRequest() {
     includeUncontrolled: false,
     type: 'window'
   };
-  clients.matchAll(options).then(function(clientList) {
-    for(var i = 0; i < clientList.length; i++) {
+  clients.matchAll(options).then(function (clientList) {
+    for (var i = 0; i < clientList.length; i++) {
       // Might do more communications or checks to make sure the message is
       // posted to the correct window only.
 
@@ -104,7 +85,7 @@ function PromiseResolver() {
   this.reject_;
 
   /** @private {!Promise<T>} */
-  this.promise_ = new Promise(function(resolve, reject) {
+  this.promise_ = new Promise(function (resolve, reject) {
     this.resolve_ = resolve;
     this.reject_ = reject;
   }.bind(this));

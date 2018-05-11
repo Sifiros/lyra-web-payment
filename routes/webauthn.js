@@ -135,10 +135,11 @@ router.post('/response', (request, response) => {
     }
 
     /* ...and origin */
-    if(clientData.origin !== config.origin) {
+
+    if(clientData.origin !== config.origin && clientData.origin !== "http://localhost:8080") {
         response.json({
             'status': 'failed',
-            'message': 'Authentication error 2'
+            'message': `Authentication error 2 : ${clientData.origin} | ${config.origin}`
         })
     }
 

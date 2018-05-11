@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use('/', defaultroutes)
 app.use('/webauthn', webuathnauth)
 
-const port = config.port || 3000;
+const port = config.port;
 app.listen(port);
 console.log(`Started app on port ${port}`);
 
