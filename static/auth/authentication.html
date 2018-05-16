@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/html" href="css/milligram.min.css">
+    <link rel="stylesheet" type="text/html" href="/css/milligram.min.css">
     <style>
         html, body, .container, .row {
             height: 100%;
@@ -83,11 +83,18 @@
         </div>
     </div>
 
-    <script src="https://test-payment-handler.appspot.com/js/auth/jquery-3.2.1.min.js"></script>
-    <script src="https://test-payment-handler.appspot.com/js/auth/utils.js"></script>
-    <script src="https://test-payment-handler.appspot.com/js/auth/base64url-arraybuffer.js"></script>
-    <script src="https://test-payment-handler.appspot.com/js/auth/view.js"></script>
-    <script src="https://test-payment-handler.appspot.com/js/auth/webauthn.auth.js"></script>
+    <script src="base64url-arraybuffer.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="view.js"></script>
+    <script src="webauthn.auth.js"></script>
+
+    <!-- <script src="./jquery-3.2.1.min.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./base64url-arraybuffer.js"></script>
+    <script src="./auth/view.js"></script>
+    <script src="./webauthn.auth.js"></script> -->
+
     <script>
         $(document).ready(() => {
             checkIfLoggedIn()

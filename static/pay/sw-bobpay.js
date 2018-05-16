@@ -3,7 +3,7 @@ let payment_request_resolver = undefined;
 
 self.addEventListener('canmakepayment', function (e) {
   console.log("can make payment !");
-  
+
   e.respondWith(true);
 });
 
@@ -14,9 +14,9 @@ self.addEventListener('paymentrequest', function (e) {
   payment_request_resolver = new PromiseResolver();
   e.respondWith(payment_request_resolver.promise);
 
-  var url = "https://test-payment-handler.appspot.com/pages/authentication.html";
+  var url = "https://test-payment-handler.appspot.com/auth/authentication.html";
+  // var url = "https://test-payment-handler.appspot.com/pay/index.html"
 
-  // var url = 'https://payzen.eu/demo/fr/redirected/'
   // The methodData here represents what the merchant supports. We could have a
   // payment selection screen, but for this simple demo if we see alipay in the list
   // we send the user through the alipay flow.
@@ -28,10 +28,17 @@ self.addEventListener('paymentrequest', function (e) {
   e.openWindow(url)
     .then(window_client => {
 
-      console.log(window_client);
-      
       if (window_client == null)
         payment_request_resolver.reject('Failed to open window');
+
+      console.log(window_client);
+
+      if (!window_client.focused) {
+        window_client.focus()
+        .catch((error) => {
+          console.log(error);
+        })
+      }
 
     })
     .catch(function (err) {

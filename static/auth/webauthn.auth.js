@@ -41,6 +41,7 @@ let sendWebAuthnResponse = (body) => {
 $('#register').submit(function(event) {
     event.preventDefault();
 
+    // window.focus()                                     // it doesn't like it
     let username = this.username.value;
     let name     = this.name.value;
     let password = this.password.value;
@@ -49,7 +50,7 @@ $('#register').submit(function(event) {
     
 
     if(!username || !name || !password) {
-        alert('Name , username or password is missing!')
+        console.log('Name , username or password is missing!')
         return
     }
 
@@ -67,11 +68,12 @@ $('#register').submit(function(event) {
         .then((response) => {
             if(response.status === 'ok') {
                 loadMainContainer()   
+                console.log("success")
             } else {
-                alert(`Server responed with error. The message is: ${response.message}`);
+                console.log(`Server responed with error. The message is: ${response.message}`);
             }
         })
-        .catch((error) => alert(error))
+        .catch((error) => console.log(error))
 })
 
 let getGetAssertionChallenge = (formBody) => {
@@ -102,7 +104,7 @@ $('#login').submit(function(event) {
 
 
     if(!username || !password) {
-        alert('Username or password is missing!')
+        console.log('Username or password is missing!')
         return
     }
 
@@ -123,9 +125,10 @@ $('#login').submit(function(event) {
         .then((response) => {
             if(response.status === 'ok') {
                 loadMainContainer()   
+                console.log("success")
             } else {
-                alert(`Server responed with error. The message is: ${response.message}`);
+                console.log(`Server responed with error. The message is: ${response.message}`);
             }
         })
-        .catch((error) => alert(error))
+        .catch((error) => console.log(error))
 })
