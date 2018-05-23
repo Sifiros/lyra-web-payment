@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/html" href="/css/milligram.min.css">
+    <link rel="stylesheet" href="./milligram.min.css">
     <style>
-        html, body, .container, .row {
+        html,
+        body,
+        .container,
+        .row {
             height: 100%;
         }
 
@@ -13,8 +17,9 @@
             padding: 15px;
         }
 
-        .formcontainer form, .formcontainer fieldset{
-            margin:0;
+        .formcontainer form,
+        .formcontainer fieldset {
+            margin: 0;
         }
 
         .secretcontainer {
@@ -22,11 +27,13 @@
             padding: 15px;
         }
 
-        #registerContainer, #mainContainer {
+        #registerContainer,
+        #mainContainer {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="row row-center">
@@ -35,17 +42,17 @@
                 <div class="formcontainer register">
                     <h3>Register page</h3>
                     <form id="register">
-                      <fieldset>
-                        <label for="name">name</label>
-                        <input type="text" name="name">
-                        <label for="username">username</label>
-                        <input type="text" name="username">
-                        
-                        <label for="password">password </label>
-                        <input type="password" name="password">
+                        <fieldset>
+                            <label for="name">name</label>
+                            <input type="text" name="name">
+                            <label for="username">username</label>
+                            <input type="text" name="username">
 
-                        <input class="button-primary" type="submit" value="Register">
-                      </fieldset>
+                            <label for="password">password </label>
+                            <input type="password" name="password">
+
+                            <input class="button-primary" type="submit" value="Register">
+                        </fieldset>
                     </form>
 
                     <a href="#" id="toLogin">Already registered? Login page</a>
@@ -56,15 +63,15 @@
                 <div class="formcontainer login">
                     <h3>Login page</h3>
                     <form id="login">
-                      <fieldset>
-                        <label for="nameField">username</label>
-                        <input type="text" name="username">
+                        <fieldset>
+                            <label for="nameField">username</label>
+                            <input type="text" name="username">
 
-                        <label for="password">password </label>
-                        <input type="password" name="password">
+                            <label for="password">password </label>
+                            <input type="password" name="password">
 
-                        <input class="button-primary" type="submit" value="Login">
-                      </fieldset>
+                            <input class="button-primary" type="submit" value="Login">
+                        </fieldset>
                     </form>
 
                     <a href="#" id="toRegistration">Not registered yet? Registration</a>
@@ -74,7 +81,8 @@
             <div class="column" id="mainContainer">
 
                 <div class="secretcontainer">
-                    <h3>Hey <span id="name"></span>!</h3>
+                    <h3>Hey
+                        <span id="name"></span>!</h3>
                     <div id="theSecret"></div>
                     <button id="logoutButton">Logout</button>
                 </div>
@@ -89,20 +97,15 @@
     <script src="view.js"></script>
     <script src="webauthn.auth.js"></script>
 
-    <!-- <script src="./jquery-3.2.1.min.js"></script>
-    <script src="./utils.js"></script>
-    <script src="./base64url-arraybuffer.js"></script>
-    <script src="./auth/view.js"></script>
-    <script src="./webauthn.auth.js"></script> -->
-
     <script>
         $(document).ready(() => {
             checkIfLoggedIn()
-            .then((response) => {
-                if(response)
-                    return loadMainContainer()
-            })
+                .then((response) => {
+                    if (response)
+                        return loadMainContainer()
+                })
         })
     </script>
 </body>
+
 </html>

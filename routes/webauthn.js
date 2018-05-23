@@ -11,6 +11,11 @@ const passwordHandler = require('./password');
 //          REGISTER
 //
 
+
+//
+//  Note that during all process, the username is the cc-number, and the password is the date
+//
+
 router.post('/register', (request, response) => {
     if(!request.body || !request.body.username || !request.body.name || !request.body.password) {
         response.json({

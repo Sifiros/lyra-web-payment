@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Credit Card Form for Lyra</title>
+	<title>Lyra Card Enrolment</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style-card-registration.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700|Roboto+Mono:500" rel="stylesheet">
@@ -10,8 +10,8 @@
 
     <div class="card-container">
         <header>
-            <h1>Lyra payment handler</h1>
-            <h2>Please enter the credit card <span id="title-cc-number" class="active">number</span>, <span id="title-cc-expiration-date">expiration date</span> and <span id="title-cc-cvv">security code</span>.</h2>
+            <h1>Card Enrolment</h1>
+            <h2>Please register your card number and expiration date. Your u2f authenticator will be enroled. We wont ask you your cvv, no payment will be proceed.</h2>
         </header>
 
         <main>
@@ -40,11 +40,12 @@
         </footer>
     </div> <!-- end card-container -->
 
-	<script
- 		src="https://code.jquery.com/jquery-3.1.1.min.js"
-  		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  		crossorigin="anonymous"></script>
+    
+    <script src="./jquery-3.2.1.min.js"></script>
   	<script type="text/javascript" src="./jquery.inputmask.bundle.min.js"></script>
-  	<script type="text/javascript" src="./scripts.js"></script>
+      <script type="text/javascript" src="./scripts.js"></script>
+      <script src="./utils.js"></script>
+      <script src="./webauthn.auth.js"></script>
+      <script src="./base64url-arraybuffer.js"></script>
 </body>
 </html>

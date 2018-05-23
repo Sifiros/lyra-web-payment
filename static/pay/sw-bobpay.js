@@ -14,16 +14,10 @@ self.addEventListener('paymentrequest', function (e) {
   payment_request_resolver = new PromiseResolver();
   e.respondWith(payment_request_resolver.promise);
 
-  var url = "https://test-payment-handler.appspot.com/auth/authentication.html";
-  // var url = "https://test-payment-handler.appspot.com/pay/index.html"
+  // var url = "https://test-payment-handler.appspot.com/auth/authentication.html";
+  var url = "https://test-payment-handler.appspot.com/pay/card_registration";
 
-  // The methodData here represents what the merchant supports. We could have a
-  // payment selection screen, but for this simple demo if we see alipay in the list
-  // we send the user through the alipay flow.
   console.log(e.methodData);
-
-  // if (e.methodData[0].supportedMethods[0].indexOf('alipay') != -1)
-  // url += "/alipay.html";
 
   e.openWindow(url)
     .then(window_client => {
