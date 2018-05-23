@@ -1,3 +1,5 @@
+# This is a work in progress, do not use
+
 # lyra-web-payment
 
 Demonstrator Webauthn + Payment request + Payment handler
